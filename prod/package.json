@@ -1,0 +1,23 @@
+{
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "firebase-admin": "^11.11.0",
+    "http": "^0.0.1-security",
+    "https": "^1.0.0",
+    "node-fetch": "^2.7.0",
+    "openapi": "^1.0.1",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  },
+  "name": "v2",
+  "version": "1.0.0",
+  "main": "single-response.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
+}

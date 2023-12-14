@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>JokeGPT.net</title>
+    <script defer>
+      document.addEventListener("DOMContentLoaded", () => {
+        const resultText = document.getElementById("resultText");
+        const generateBtn = document.getElementById("generateBtn");
+        const promptInput = document.getElementById("promptInput");
+
+        generateBtn.addEventListener("click", async () => {
+          resultText.innerText = ""; // Clear previous results
+
+          try {
+            const response = await fetch("/generate", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({ prompt: promptInput.value }),
+            });
+
+            const stream = response.body;
+            const reader = stream.getReader();
+
+            // Recursive function to read the stream
+            const readStream = async () => {
+              const { done, value } = await reader.read();
+              if (done) return;
+
+              const textChunk = new TextDecoder().decode(value);
+              const lines = textChunk.split("\n");
+
+              lines.forEach((line) => {
+                if (line.startsWith("data: ")) {
+                  const data = JSON.parse(line.substr(6));
+                  if (data.choices && data.choices.length > 0 && data.choices[0].delta) {
+                    resultText.innerText += data.choices[0].delta.content || "";
+                  }
+                }
+              });
+
+              // Call the function recursively to read the next chunk
+              readStream();
+            };
+
+            // Start reading the stream
+            readStream();
+
+          } catch (error) {
+            console.error("An error occurred:", error);
+          }
+        });
+      });
+    </script>
+  </head>
+  
+  <body class="bg-black text-black min-h-screen flex items-center justify-center p-4">
+      <div class="max-w-xl w-full p-6 rounded-md bg-gray-100 shadow-md">
+        <center><img src="https://i.ibb.co/k5Gpg6r/1626590-emoji-emoticons-happy-laugh-laughing-icon128px.png" border="0"></center>
+          <h1 class="text-2xl md:text-3xl font-bold mb-6 text-center">JokeGPT.net</h1>
+          <div id="resultContainer" class="mt-4 h-48 overflow-y-auto bg-white p-2 rounded-md">
+              <p class="text-gray-500 text-sm mb-2"></p>
+              <p id="resultText" class="whitespace-pre-line"></p>
+          </div>
+          <input type="text" id="promptInput" class="w-full px-4 py-2 rounded-md bg-gray-200 placeholder-gray-500 focus:outline-none mt-4" placeholder="Subject to joke about..." />
+          <div class="flex justify-center mt-4">
+              <button id="generateBtn" class="w-full md:w-1/2 px-4 py-2 rounded-md bg-black text-white hover:bg-gray-900 focus:outline-none">
+                  Write Comedy
+              </button>
+          </div>
+      </div>
+  </body>
+  
+  </html>
+  
