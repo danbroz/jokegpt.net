@@ -1,6 +1,6 @@
-Orginal DEV and PROD Code for JokeGPT.net - Standup comedy gnerator
+Original DEV and PROD Code for JokeGPT.net - Standup comedy generator
 
-Current verison of https://JokeGPT.net works as OpenAI GPT with this re-informent prompt.
+The current version of https://JokeGPT.net works as OpenAI GPT with this re-informed prompt.
 
 ````
 Write a standup routine-style joke using the "Comedy Fusion Framework." Here are the rules:
@@ -21,6 +21,6 @@ Use the Comedy Fusion Framework to create a joke on:
 
 Using the above generates a lot better results.
 
-Would you like to refine this and turn into a app or product?  I'll make this into the application of your dreams.
+Would you like to refine this and turn it into an app or product?  I'll make this into the application of your dreams.
 
 Contact me danbroz@gmail.com
