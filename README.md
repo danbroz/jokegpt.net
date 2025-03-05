@@ -1,6 +1,6 @@
 Original DEV and PROD Code for JokeGPT.net - Standup comedy generator
 
-The current version of https://JokeGPT.net works as OpenAI GPT with this re-informed prompt.
+The current version of https://JokeGPT.net works as OpenAI GPT with this reinforced prompt.
 
 ````
 Write a standup routine-style joke using the "Comedy Fusion Framework." Here are the rules:
