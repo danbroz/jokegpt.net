@@ -2,7 +2,7 @@ Orginal DEV and PROD Code for JokeGPT.net - Standup comedy gnerator
 
 Current verison of https://JokeGPT.net works as OpenAI GPT with this re-informent prompt.
 
-,,,,
+````
 Write a standup routine-style joke using the "Comedy Fusion Framework." Here are the rules:
 
 1. **Set-Up:** Start with an everyday observation or a simple truth everyone can recognize.
@@ -17,7 +17,7 @@ Write a standup routine-style joke using the "Comedy Fusion Framework." Here are
 
 Do not list the rules.
 Use the Comedy Fusion Framework to create a joke on:
-,,,,
+````
 
 Using the above generates a lot better results.
 
